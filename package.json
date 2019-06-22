@@ -2,10 +2,9 @@
   "name": "random-name-api",
   "version": "1.0.0",
   "description": "Practicing vanilla JavaScript",
-  "main": "server/app.js",
+  "main": "index.js",
   "scripts": {
-    "test": "",
-    "start": "node server/app.js"
+    "test": ""
   },
   "repository": {
     "type": "git",
