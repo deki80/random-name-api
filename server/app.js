@@ -33,5 +33,5 @@ app.post('/dodaj-ime', dodajIme)
 /* SERVER */
 
 app.listen(8080, function() {
-	console.log('Server je krenuo.')
+	console.log('Server listening on port 8080')
 })
