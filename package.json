@@ -4,7 +4,8 @@
   "description": "Practicing vanilla JavaScript",
   "main": "index.js",
   "scripts": {
-    "test": ""
+    "test": "",
+    "start": "cd server; node app.js"
   },
   "repository": {
     "type": "git",

@@ -5,8 +5,8 @@ Playing around with vanilla JavaScript on front-end and Node / Express on backen
 # Development
 
 npm install
-cd server
-node app.js
+
+npm start
 
 # API routes
 
