@@ -1,6 +1,9 @@
 # random-name-api
 Custom Single Page App
+
 Playing around with vanilla JavaScript on front-end and Node / Express on backend.
+
+Imitating Single Page Application's rendering on client behavior, with vanilla JavaScript. Backend data fetched with the fetch API.
 
 # Development
 
