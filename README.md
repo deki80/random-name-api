@@ -1,5 +1,5 @@
 # random-name-api
-Custom Single Page App
+Custom Single Page App Vanilla JavaScript
 
 Playing around with vanilla JavaScript on front-end and Node / Express on backend.
 
