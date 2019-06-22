@@ -5,8 +5,6 @@ Playing around with vanilla JavaScript on front-end and Node / Express on backen
 
 Imitating Single Page Application's rendering on client behavior, with vanilla JavaScript. Backend data fetched with the fetch API.
 
-It is complit refactor of a forked repository from https://github.com/skolakoda/random-name-api
-
 # Development
 
 npm install //to install all dependencies
