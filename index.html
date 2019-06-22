@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Random Ime App</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+  </head>
+<body style="background-color: #C8C2CC;">
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav" style="min-height:100vh;">
+      <div class="menu" style="text-align:center; margin-top:20px;margin-bottom:20px;">
+        <h3>Škola Koda</h3>
+        <h4>Random Ime App</h4>
+      </div>
+      <div>
+        <ul class="nav nav-pills nav-stacked">
+          <li class=" active"><a data-link="" data-template="start" href="/">Početna</a></li>
+          <li><a data-link="sva-imena" data-template="allNames" href="/">Sva Imena</a></li>
+          <li><a data-link="random" data-template="randomName" href="/">Random Ime</a></li>
+          <!--<li><a data-link="addName" data-template="addName" href="/">Dodaj Ime</a></li>-->
+          <li><button id="addName" class="myLink">Dodaj Ime</button></li>
+        </ul><br>
+      </div>
+    </div>
+
+    <div class="col-sm-9 main" style="text-align:center;min-height:100vh;border-left:2px solid #403073;">
+      <h4>Prikaz Rezultata sa Backend-a</h4>
+      <hr>
+      
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="app">
+            <div class="w3-animate-bottom">
+              <h1>{ ŠKOLA KODA }</h1>
+              <h3>Vežba pozivanja backend aplikacije za prikaz imena.</h3>
+            </div>
+          </div>
+
+          <div id="add" style="display:none;">
+              <div id="unesi">
+                <h3>Dodaj novo ime na listu:</h3>
+                <div style="padding: 20px;border-radius:20px;border:2px solid #fff;">
+                  <form>
+                    <input type="text" name="ime" id="ime">
+                    <button>Pošalji</button>
+                  </form>
+                </div>
+              </div>
+              <div id="res"></div>
+
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<script type="module">
+  import { data } from './js/data.js';
+  import templateObj from './js/templates/start.js';
+  import addNewName from './js/addName.js'
+  const app = document.querySelector('#app');
+  
+  const dodaj = document.querySelector("#addName");
+  dodaj.addEventListener('click', function() {
+    document.querySelector("#app").style.display = "none";
+    document.querySelector("#add").style.display = "block";
+    document.querySelector("#ime").value = "";
+    document.querySelector("#unesi").style.display = "block";
+    document.querySelector("#res").style.display = "none";
+  })
+
+  const sendName = document.getElementsByTagName("form")[0];
+  sendName.addEventListener('submit', function(e) {
+    e.preventDefault();
+    let name = document.querySelector('#ime').value;
+    addNewName(name)
+    .then(function (dataRes) {
+      let addDiv = document.querySelector('#res');
+      document.querySelector("#unesi").style.display = "none";
+      addDiv.innerHTML = `<h3>${dataRes}</h3>`;
+      addDiv.style.display = "block";
+    })
+  })
+
+
+  /* get all buttons */
+  const routes = [...document.getElementsByTagName("A")];
+
+  routes.forEach(function(route) {
+    route.addEventListener('click', function(element) {
+      element.preventDefault();
+      document.querySelector("#add").style.display = "none";
+      document.querySelector("#app").style.display = "block";
+
+      /* toggle/add class 'active' on selected element */
+      var current = document.getElementsByClassName("active");
+      current[0].className = current[0].className.replace(" active", "");
+      let parent = route.parentElement;
+      parent.className += " active";
+
+      /* fetch data from url and bind new element to app */
+      const link = route.dataset.link;
+      const template = route.dataset.template;
+      data(link, template)
+        .then(function(data){
+          app.innerHTML = '';
+          const dataArr = data.split(', ');
+          dataArr.forEach(function(name) {
+            app.innerHTML += templateObj[template](name);
+          })
+        });
+    })
+  })
+  
+</script>
+</body>
+</html>

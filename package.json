@@ -1,0 +1,23 @@
+{
+  "name": "random-name-api",
+  "version": "1.0.0",
+  "description": "Practicing vanilla JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deki80/random-name-api.git"
+  },
+  "author": "Dejan Tomić",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deki80/random-name-api/issues"
+  },
+  "homepage": "https://github.com/deki80/random-name-api#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}
