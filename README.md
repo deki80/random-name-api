@@ -4,9 +4,11 @@ Playing around with vanilla JavaScript on front-end and Node / Express on backen
 
 # Development
 
-npm install
+npm install //to install all dependencies
 
-npm start
+npm run start // to start node server for backend api
+
+npm run front // to start live server for serving frontend 
 
 # API routes
 
